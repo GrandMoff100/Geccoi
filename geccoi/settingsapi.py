@@ -22,23 +22,6 @@ def get_settings_file():
         return {}
 
 
-def get_settings(*setting_names):
-    """Returns setting values by given names."""
-    settings_path = sys.executable + "\\lib\\site-packages\\geccoi\\settings.json"
-
-    aquired_settings = {}
-
-    settings = get_settings_file()
-
-    for key in setting_names:
-        try:
-            aquired_settings[key] = settings[key]
-        except KeyError:
-            change_setting(key, None)
-
-    return aquired_settings
-
-
 def create_settings_file():
     settings_path = sys.executable + "\\lib\\site-packages\\geccoi\\settings.json"
 
@@ -47,8 +30,7 @@ def create_settings_file():
             json.dump(
                 {
                     "general": {
-                        "theme": "DarkBlue",
-                        "run-in-background": False,
+                        "theme": "Geccoi",
                         "on-startup": False
                     },
 
