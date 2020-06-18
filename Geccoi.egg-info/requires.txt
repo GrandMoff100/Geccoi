@@ -1,6 +1,0 @@
-PySimpleGUI
-keyboard
-mouse
-opencv-contrib-python-headless
-numpy
-click
