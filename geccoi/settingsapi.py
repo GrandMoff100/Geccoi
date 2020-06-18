@@ -1,6 +1,6 @@
 """
 Settings Manager API for the GUI
-controller.py uses this to access the settings.
+app.py uses this to access the settings.
 
 By @GrandMoff100
 """
@@ -9,33 +9,29 @@ import json, sys, os
 
 
 def get_settings_file():
-    """Retrieves the settings from settings.json in the package folder."""
-    settings_path = sys.executable + "\\lib\\site-packages\\geccoi\\settings.json"
+    """Retrieves the settings from settings.json in the current working directory."""
+    settings_path = os.getcwd() + "\\settings.json"
 
-    try:
-        with open(settings_path, "r") as settings:
-            return json.load(settings)
-    except FileNotFoundError:
-        with open(settings_path, "w") as settings:
-            json.dump({}, settings)
+    create_settings_file()
 
-        return {}
+    with open(settings_path, "r") as settings:
+        return json.load(settings)
+
 
 
 def create_settings_file():
-    settings_path = sys.executable + "\\lib\\site-packages\\geccoi\\settings.json"
 
+    settings_path = os.getcwd() + "\\settings.json"
     if not settings_exists():
         with open(settings_path, "w") as j:
             json.dump(
                 {
                     "general": {
-                        "theme": "Geccoi",
-                        "on-startup": False
+                        "theme": "Geccoi"
                     },
 
                     "keyboard": {
-
+                        "typing-language": "English - en"
                     },
 
                     "mouse": {
@@ -48,4 +44,15 @@ def create_settings_file():
 
 
 def settings_exists():
-    return True if os.path.exists(sys.executable + "\\lib\\site-packages\\geccoi\\settings.json") else False
+    return True if os.path.isfile(os.getcwd() + "\\settings.json") else False
+
+def change_setting(key, category, new_setting):
+    settings_path = os.getcwd() + "\\settings.json"
+
+    with open(settings_path, "r") as file:
+        settings = json.load(file)
+
+    settings[category][key] = new_setting
+
+    with open(settings_path, "w") as file:
+        json.dump(settings, file)

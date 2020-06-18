@@ -1,8 +1,4 @@
-import pygame
-import pygame.camera
+from geccoi.ic.gkeyboard import GKeyboard
 
-pygame.camera.init()
-cam = pygame.camera.Camera(0,(640,480))
-cam.start()
-img = cam.get_image()
-pygame.image.save(img,"filename.jpg")
+keyboard = GKeyboard(**{"typing-language": "Chinese - zh"})
+keyboard.type(*["hello"])

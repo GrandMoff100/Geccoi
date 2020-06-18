@@ -1,5 +1,5 @@
 import keyboard as _k
-
+from translate import Translator
 
 class GKeyboard:
     def __init__(self, **settings):
@@ -10,10 +10,13 @@ class GKeyboard:
         self._configs = settings
         
         """Sets all settings for keyboard operation."""
-        # No settings
+        self._language = self._configs.get("typing-language") if self._configs.get("typing-language") is not None else "en"
+        self._translator = Translator(to_lang=self._language[-2:])
     
     def type(self, *keys):
         """Joins all sent keys into one"""
+
+        keys = [self._translator.translate(key) for key in keys]
         action = "".join(keys)
         
         self._keyboard.write(action)
