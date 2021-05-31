@@ -3,6 +3,7 @@ import requests
 
 MAX = 20
 
+
 def up(version):
     version = [int(x) for x in version.split('.')]
     version[-1] += 1
@@ -15,9 +16,11 @@ def up(version):
     version.reverse()
     return '.'.join([str(x) for x in version])
 
+
 def current_version():
     data = requests.get('https://pypi.org/pypi/Geccoi/json').json()
     return data['info']['version']
+
 
 setup(
     name='Geccoi',

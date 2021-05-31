@@ -5,23 +5,24 @@ app.py uses this to access the settings.
 By @GrandMoff100
 """
 
-import json, sys, os
+import json
+import os
+
+
+settings_path = os.path.join(
+    os.getcwd(),
+    "settings.json"
+)
 
 
 def get_settings_file():
     """Retrieves the settings from settings.json in the current working directory."""
-    settings_path = os.getcwd() + "\\settings.json"
-
     create_settings_file()
-
     with open(settings_path, "r") as settings:
         return json.load(settings)
 
 
-
 def create_settings_file():
-
-    settings_path = os.getcwd() + "\\settings.json"
     if not settings_exists():
         with open(settings_path, "w") as j:
             json.dump(
@@ -39,20 +40,17 @@ def create_settings_file():
                         "inversed": False
                     }
 
-                },
-                j)
+                }, j, indent=4
+            )
 
 
 def settings_exists():
-    return True if os.path.isfile(os.getcwd() + "\\settings.json") else False
+    return True if os.path.isfile(settings_path) else False
+
 
 def change_setting(key, category, new_setting):
-    settings_path = os.getcwd() + "\\settings.json"
-
     with open(settings_path, "r") as file:
         settings = json.load(file)
-
     settings[category][key] = new_setting
-
     with open(settings_path, "w") as file:
         json.dump(settings, file)
