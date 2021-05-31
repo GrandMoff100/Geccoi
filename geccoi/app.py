@@ -17,7 +17,6 @@ class GeccoiApp:
 
         self._model = None
 
-
     @property
     def gui(self):
         return self._gui
@@ -26,8 +25,10 @@ class GeccoiApp:
         self._gui = GeccoiInterface(**self._settings, debug=debug)
 
         if not cv2.VideoCapture(0).read()[0]:
-            self._gui.sg.popup("GeCCOI requires a camera to operate. \n No camera's could be found.",
-                               font="Courier 28 bold")
+            self._gui.sg.popup(
+                "GeCCOI requires a camera to operate. \n No camera's could be found.",
+                font="Courier 28 bold"
+            )
 
         self._gui.window.finalize()
         self._gui.window["warning"](" " * 4 + "Warning: No Cameras Found", visible=True)

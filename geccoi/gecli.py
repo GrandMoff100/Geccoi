@@ -3,10 +3,8 @@ import click
 try:
     from geccoi import GeccoiApp
     app = GeccoiApp()
-
 except ModuleNotFoundError as err:
     click.echo(err)
-
 
 
 @click.command(help="The Gecco")
@@ -16,7 +14,6 @@ except ModuleNotFoundError as err:
 def cli(start, debug, description):
     if description:
         click.echo("GeCLI for interacting with the GeCCOI application.")
-
     if start:
         if debug:
             click.echo("GUI Process Started...")
@@ -29,4 +26,3 @@ def cli(start, debug, description):
 
 if __name__ == '__main__':
     cli()
-
