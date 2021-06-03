@@ -2,6 +2,7 @@ click
 PySimpleGUI
 mouse
 keyboard
-opencv-contrib-python-headless
 translate
 numpy
+mediapipe
+opencv-python
