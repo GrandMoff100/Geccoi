@@ -1,3 +1,0 @@
-Siddharth please put your Gesture recog AI here. in /gesture_recog/
-
-P.S. Its called geccoi (GEsture Controlled Computer Operation and Input)

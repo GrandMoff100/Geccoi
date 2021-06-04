@@ -1,8 +1,8 @@
 import cv2
 
-from .settingsapi import get_settings_file
-from .ic import GKeyboard, GMouse
-from .gui import GeccoiInterface
+from geccoi.settingsapi import get_settings_file
+from geccoi.ic import GKeyboard, GMouse
+from geccoi.gui import GeccoiInterface
 
 
 class GeccoiApp:
