@@ -9,14 +9,14 @@ class HandDetector:
         self.min_detection_confidence = min_detection_confidence
         self.min_tracking_confidence = min_tracking_confidence
 
-        self.hands = self.mp.solutions.hands.Hands(self.mode, self.max_num_hands,
+        self.hands = mp.solutions.hands.Hands(self.mode, self.max_num_hands,
                                                    self.min_detection_confidence, self.min_tracking_confidence)
         self.drawing_utils = mp.solutions.drawing_utils
 
     def find_hands(self, img, draw=False):
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-        self.results = self.hands.process(img)
+        self.results = self.hands.process(imgRGB)
 
         if self.results.multi_hand_landmarks:
             for hand in self.results.multi_hand_landmarks:
@@ -37,10 +37,10 @@ class HandDetector:
                     if draw:
                         cv2.circle(img, (cx, cy), 15, (255, 255, 255), cv2.FILLED)
 
-                return landmark_list
-
-            elif point:
-                return {"x": landmark_list[point][1], "y": landmark_list[point][2]}
+        if point:
+            return {"x": landmark_list[point][1], "y": landmark_list[point][2]}
+        else:
+            return landmark_list
 
 
 if __name__ == "__main__":

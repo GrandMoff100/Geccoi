@@ -6,3 +6,5 @@ translate
 numpy
 mediapipe
 opencv-python
+comtypes
+pycaw
