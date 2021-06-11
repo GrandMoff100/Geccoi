@@ -32,7 +32,7 @@ class GeccoiInterface:
         self._layout = [
             [self._sg.Text(" " * 100), self._sg.Button("Exit", button_color=("#e00000", self._sg.LOOK_AND_FEEL_TABLE["Geccoi"]["BACKGROUND"]), size=(6, 1))],
             [self._sg.Text("_" * 80, font="Courier 15 bold")],
-            [self._sg.Text(" "), self._sg.Text("GeCCOI Manager", font="Courier 30 bold")],
+            [self._sg.Text(" "), self._sg.Text("Geccoi Manager", font="Courier 30 bold")],
             [self._sg.Text("Warning:", key="warning", size=(80, 1), visible=False, font="Courier 18 bold", text_color="darkred")],
             [self._sg.Text(" " * 40), self._sg.Button("Start", font="Courier 15", button_color=("white", "#07c700"), size=(12, 1), key="-S/S-")],
             [self._sg.Text("")],
@@ -49,7 +49,7 @@ class GeccoiInterface:
             [self._sg.Text("_" * 15, font="Courier 15 bold"), self._sg.Submit("Save All", font="Courier 12 bold", key="save-settings", button_color=("white", self._sg.DEFAULT_BACKGROUND_COLOR), size=(10, 1)), self._sg.Text("_" * 15, font="Courier 15 bold")]
         ]
 
-        self._window = self._sg.Window('GeCCOI Manager', self._layout, size=(500, self._get_display_res()[1]), no_titlebar=True)
+        self._window = self._sg.Window('Geccoi Manager', self._layout, size=(500, self._get_display_res()[1]), no_titlebar=True)
 
     def _get_display_res(self):
         # Get Display Resolution.
