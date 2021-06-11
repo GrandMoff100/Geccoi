@@ -8,5 +8,5 @@ Use your camera to control mouse and keyboard.
 ## Usage
 
 ## Settings
-
+There is a setting GUI to easily customize your geccoi experience!
 ## Contributing
